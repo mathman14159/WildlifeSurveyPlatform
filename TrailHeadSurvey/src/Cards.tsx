@@ -30,4 +30,5 @@ function Card({ name, image, count, onAdd, onSubtract }: CardProps) {
 
 
 
+
 export default Card;
