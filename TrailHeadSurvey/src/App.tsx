@@ -31,6 +31,32 @@ const [animals, setAnimals] = useState<Animal[]>([
     image: "/images/bighorn-sheep.jpg",
     count: 0,
   }, 
+  {
+    name: "Otter",
+    image: "/images/bighorn-sheep.jpg",
+    count: 0,
+  }, 
+  {
+    name: "Wolverine",
+    image: "/images/bighorn-sheep.jpg",
+    count: 0,
+  }, 
+  {
+    name: "Wolf",
+    image: "/images/bighorn-sheep.jpg",
+    count: 0,
+  }, 
+  {
+    name: "Lynx",
+    image: "/images/bighorn-sheep.jpg",
+    count: 0,
+  }, 
+  {
+    name: "Grizzly Bear",
+    image: "/images/bighorn-sheep.jpg",
+    count: 0,
+  }, 
+
 ]);
 
 function addAnimal(index: number) {
@@ -65,7 +91,8 @@ function addAnimal(index: number) {
           image={animal.image}
           count={animal.count}
           onAdd={() => addAnimal(index)}
-          onSubtract={() => subtractAnimal(index)} />
+          onSubtract={() => subtractAnimal(index)} 
+          />          
       ))}
     </div><><button onClick={submitSurvey}>Submit</button></></>
     

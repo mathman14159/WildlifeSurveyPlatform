@@ -24,6 +24,12 @@ function Card({ name, image, count, onAdd, onSubtract }: CardProps) {
 
         <button onClick={onAdd}>+</button>
       </div>
+      <div>
+        <p>Info About The Sighting</p>
+        <input>
+
+        </input>
+      </div>
     </div>
   );
 }
