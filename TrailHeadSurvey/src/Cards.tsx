@@ -1,4 +1,4 @@
-
+//Creates cards for site
 
 type CardProps = {
   name: string;
