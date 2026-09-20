@@ -6,10 +6,15 @@ type CardProps = {
   count: number;
   onAdd: () => void;
   onSubtract: () => void;
+  value: string;
+  onValueChange: (value:string) => void;
 };
 
-function Card({ name, image, count, onAdd, onSubtract }: CardProps) {
-  
+function Card({ name, image, count, onAdd, onSubtract, value, onValueChange}: CardProps) {
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onValueChange(e.target.value);
+  };
 
   return (
     <div className="card">
@@ -26,16 +31,13 @@ function Card({ name, image, count, onAdd, onSubtract }: CardProps) {
       </div>
       <div>
         <p>Info About The Sighting</p>
-        <input>
+        <input type="text" value={value} onChange={handleChange}>
 
         </input>
       </div>
     </div>
   );
 }
-
-
-
 
 
 export default Card;
