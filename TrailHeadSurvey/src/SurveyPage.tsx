@@ -1,5 +1,5 @@
 
-
+import { supabase } from "./lib/supabase";
 import { useState } from "react";
 import Card from "./Cards.tsx";
 
@@ -10,7 +10,7 @@ type Animal = {
   count: number;
 }
 
-function SurveyPage() {
+function SurveyPage() { 
 const [animals, setAnimals] = useState<Animal[]>([
   
   {
@@ -89,10 +89,32 @@ function addAnimal(index: number) {
     }));
   }
 
-  function submitSurvey() {
-    console.log(animals, sightingInfo);
-    
+  async function submitSurvey() {
+  const sightingsToSave = animals
+    .filter((animal) => animal.count > 0)
+    .map((animal) => ({
+      animal_name: animal.name,
+      animal_count: animal.count,
+      notes: sightingInfo[animal.name] || null,
+    }));
+
+  if (sightingsToSave.length === 0) {
+    alert("Please report at least one animal.");
+    return;
   }
+
+  const { error } = await supabase
+    .from("sightings")
+    .insert(sightingsToSave);
+
+  if (error) {
+    console.error(error);
+    alert("Your survey could not be saved.");
+    return;
+  }
+
+  alert("Survey saved!");
+}
 
 
   return (
